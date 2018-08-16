@@ -109,6 +109,7 @@
                     android:textSize="28dp" />
 
                 <Button
+                    android:id="@+id/get_help_malayalam"
                     android:layout_width="201dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -212,6 +213,7 @@
                     android:textSize="28dp" />
 
                 <Button
+                    android:id="@+id/get_help_english"
                     android:layout_width="201dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
