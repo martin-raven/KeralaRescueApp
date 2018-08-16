@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,8 +8,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
         android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
@@ -16,7 +21,7 @@
 
         <Button
             android:id="@+id/malayalam"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@drawable/cornered_edges_malayalam_selected"
             android:text="മലയാളം"
@@ -26,7 +31,7 @@
             android:text="English"
             android:background="@drawable/cornered_edges_english_deselected"
             android:textColor="@android:color/black"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
@@ -38,8 +43,8 @@
             android:id="@+id/malayalam_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -52,22 +57,23 @@
                 android:textStyle="bold"
                 android:text="അറിയിപ്പ്" />
             <TextView
-                android:layout_gravity="center"
+                android:padding="5dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorGray"
                 android:textStyle="bold"
-                android:textSize="16dp"
+                android:textSize="22dp"
                 android:text="പ്രളയ ബാധിതർ സഹായം  തേടാൻ  താഴെ കാണുന്ന വലിയ കറുത്ത ബട്ടണിൽ അമർത്തുക. നിങ്ങളുടെ  ലൊക്കേഷനും  മറ്റു അത്യാവശ്യ വിവരങ്ങളും ദുരന്ത നിവാരണ സേനയിലേക്ക് ഉടൻ കൈമാറപ്പെടും." />
 
             <TextView
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="16dp"
+                android:textSize="22dp"
                 android:text="ഇന്റര്നെറ്  സംവിധാനം  ഇല്ലാത്തവർ  താഴെ കാണുന്ന നമ്പറിൽ വിളിക്കുക" />
 
             <TextView
@@ -95,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="18dp"
+                android:textSize="22dp"
                 android:text="നിങ്ങളുടെ സ്ഥലം " />
             <TextView
                 android:layout_gravity="center"
@@ -103,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="18dp"
+                android:textSize="28dp"
                 android:text="Panamaram,Wayanadu" />
         </LinearLayout>
         <LinearLayout
@@ -111,8 +117,8 @@
             android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -124,22 +130,22 @@
                 android:textSize="32dp"
                 android:text="Notice" />
             <TextView
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorGray"
                 android:textStyle="bold"
-                android:textSize="16dp"
+                android:textSize="22dp"
                 android:text="Please use the black button below to share your location and other important information with the rescue authorities in case of an emergency" />
 
             <TextView
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="16dp"
+                android:textSize="22dp"
                 android:text="In case of no internet connectivity please call to one of these numbers to get help" />
 
             <TextView
@@ -167,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="18dp"
+                android:textSize="22dp"
                 android:text="Your Current Location" />
             <TextView
                 android:layout_gravity="center"
@@ -175,10 +181,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="18dp"
+                android:textSize="28dp"
                 android:text="Panamaram,Wayanadu" />
         </LinearLayout>
 
     </RelativeLayout>
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
