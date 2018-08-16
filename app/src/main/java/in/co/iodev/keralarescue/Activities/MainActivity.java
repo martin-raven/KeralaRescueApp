@@ -37,10 +37,12 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
@@ -48,6 +50,11 @@ import java.util.Locale;
 
 import in.co.iodev.keralarescue.Models.DataModel;
 import in.co.iodev.keralarescue.R;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 public class MainActivity extends Activity {
@@ -59,7 +66,9 @@ public class MainActivity extends Activity {
     Boolean enlish_selected=true;
     DataModel datatobesent=new DataModel();
     Gson gson = new Gson();
-    String StringData,post_url="https://byw1s98hik.execute-api.ap-south-1.amazonaws.com/dev/androidapp/post";
+    TextView noticeText,noticeEng;
+    String StringData;
+    private static final String post_url= "https://byw1s98hik.execute-api.ap-south-1.amazonaws.com/dev/androidapp/post";
     public static final int LOCATION_UPDATE_INTERVAL = 10;  //mins
 
 
@@ -77,6 +86,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        noticeText = findViewById(R.id.noticeText);
+        noticeEng = findViewById(R.id.noticeEnglish);
         Malayalam = findViewById(R.id.malayalam);
         English = findViewById(R.id.english);
         Malayalam_layout = findViewById(R.id.malayalam_layout);
@@ -88,11 +99,14 @@ public class MainActivity extends Activity {
 
         status_english = findViewById(R.id.help_status_english);
         status_malayalam = findViewById(R.id.help_status_malayalam);
-        status_malayalam.setVisibility(View.GONE);
-        status_english.setVisibility(View.GONE);
+        //status_malayalam.setVisibility(View.GONE);
+        //status_english.setVisibility(View.GONE);
 
         num_of_people_english=findViewById(R.id.no_of_people_english);
         num_of_people_malayalam=findViewById(R.id.no_of_people_malayalam);
+
+        noticeText.setSelected(true);
+        noticeEng.setSelected(true);
 
         findViewById(R.id.edit_location_english).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,8 +132,8 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 batteryPercentage = getBatteryPercentage();
                 getLocation();
-                Help_English.setVisibility(View.GONE);
-                status_english.setVisibility(View.VISIBLE);
+                //Help_English.setVisibility(View.GONE);
+                //status_english.setVisibility(View.VISIBLE);
                 datatobesent.setNumber_of_people(num_of_people_english.getText().toString());
                 StringData=gson.toJson(datatobesent);
                 Log.d("Data in json ",StringData);
@@ -135,7 +149,7 @@ public class MainActivity extends Activity {
                 status_malayalam.setVisibility(View.VISIBLE);
                 datatobesent.setNumber_of_people(num_of_people_malayalam.getText().toString());
                 StringData=gson.toJson(datatobesent);
-                Log.d("Data in json ",StringData);
+                Log.e("Data in json ",StringData);
                 new HTTPAsyncTask().execute(post_url);
             }
         });
@@ -271,6 +285,33 @@ public class MainActivity extends Activity {
                 break;
         }
     }
+
+    /**
+     * Method to make network call to push the data using OkHTTP
+     */
+    private void makeNetworkCall()
+    {
+        OkHttpClient client=new OkHttpClient();
+        Request request=new Request.Builder().url(post_url).build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e)
+            {
+
+                Log.e(getClass().getSimpleName(), "Exception parsing JSON", e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                Log.e("TAG","SUCCESS");
+            }
+        });
+    }
+
+
+
     private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -289,7 +330,7 @@ public class MainActivity extends Activity {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            Log.d("data is being sent",result);
+            Log.e("data is being sent",result);
         }
     }
     private String HttpPost(String myUrl) throws IOException {

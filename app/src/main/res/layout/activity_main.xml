@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.MainActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="10dp">
+    android:paddingBottom="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
         <LinearLayout
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -56,31 +50,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="10dp"
                     android:text="അറിയിപ്പ്"
                     android:textColor="@android:color/black"
-                    android:textSize="32dp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/noticeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:padding="5dp"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:fadingEdge="horizontal"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
                     android:text="പ്രളയ ബാധിതർ സഹായം  തേടാൻ  താഴെ കാണുന്ന വലിയ കറുത്ത ബട്ടണിൽ അമർത്തുക. നിങ്ങളുടെ  ലൊക്കേഷനും  മറ്റു അത്യാവശ്യ വിവരങ്ങളും ദുരന്ത നിവാരണ സേനയിലേക്ക് ഉടൻ കൈമാറപ്പെടും."
                     android:textColor="@android:color/black"
-                    android:textSize="22dp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="ഇന്റര്നെറ്  സംവിധാനം  ഇല്ലാത്തവർ  താഴെ കാണുന്ന നമ്പറിൽ വിളിക്കുക"
                     android:textColor="@android:color/black"
-                    android:textSize="15dp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -88,8 +87,9 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:text="1070, 1074, 1077"
+                    android:textStyle="bold"
                     android:textColor="@android:color/holo_red_dark"
-                    android:textSize="32dp" />
+                    android:textSize="22sp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                     android:layout_marginTop="10dp"
                     android:text="ആളുകളുടെ എണ്ണം"
                     android:textColor="@android:color/black"
-                    android:textSize="28dp" />
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/no_of_people_malayalam"
@@ -110,7 +110,8 @@
                     android:background="@drawable/rounded_edge_noofpeopple"
                     android:gravity="center"
                     android:inputType="number"
-                    android:text="1"
+                    android:imeOptions="actionDone"
+                    android:hint="1"
                     android:textColor="@android:color/black"
                     android:textSize="28dp" />
 
@@ -138,9 +139,9 @@
                         android:layout_gravity="center"
                         android:id="@+id/location_text_malayalam"
                         android:layout_marginTop="10dp"
-                        android:text="Loading..."
+                        android:hint="Loading..."
                         android:textColor="@android:color/black"
-                        android:textSize="28dp" />
+                        android:textSize="20sp" />
                     <Button
                         android:id="@+id/edit_location_malayalam"
                         android:layout_marginLeft="20dp"
@@ -153,7 +154,7 @@
                         android:gravity="center"
                         android:text="തിരുത്തുക"
                         android:textColor="@android:color/white"
-                        android:textSize="22dp" />/>
+                        android:textSize="22sp" />/>
                     <Button
                         android:id="@+id/get_help_malayalam"
                         android:layout_width="match_parent"
@@ -166,7 +167,7 @@
                         android:gravity="center"
                         android:text="സഹായം തേടുക"
                         android:textColor="@android:color/white"
-                        android:textSize="22dp" />
+                        android:textSize="22sp" />
 
                 </LinearLayout>
 
@@ -185,19 +186,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="10dp"
                     android:text="Notice"
                     android:textColor="@android:color/black"
-                    android:textSize="32dp" />
+                    android:textSize="22sp" />
 
                 <TextView
+                    android:id="@+id/noticeEnglish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:fadingEdge="horizontal"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
                     android:text="Please use the black button below to share your location and other important information with the rescue authorities in case of an emergency"
                     android:textColor="@android:color/black"
-                    android:textSize="22dp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -216,7 +223,7 @@
                     android:layout_marginTop="20dp"
                     android:text="1070, 1074, 1077"
                     android:textColor="@android:color/holo_red_dark"
-                    android:textSize="32dp" />
+                    android:textSize="20sp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -299,4 +306,3 @@
 
         </RelativeLayout>
     </LinearLayout>
-</ScrollView>
