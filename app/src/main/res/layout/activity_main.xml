@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:paddingBottom="10dp">
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -97,7 +98,7 @@
                     android:layout_marginTop="10dp"
                     android:text="ആളുകളുടെ എണ്ണം"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="28dp" />
 
                 <EditText
                     android:id="@+id/no_of_people_malayalam"
@@ -110,8 +111,7 @@
                     android:background="@drawable/rounded_edge_noofpeopple"
                     android:gravity="center"
                     android:inputType="number"
-                    android:imeOptions="actionDone"
-                    android:hint="1"
+                    android:text="1"
                     android:textColor="@android:color/black"
                     android:textSize="28dp" />
 
@@ -139,9 +139,9 @@
                         android:layout_gravity="center"
                         android:id="@+id/location_text_malayalam"
                         android:layout_marginTop="10dp"
-                        android:hint="Loading..."
+                        android:text="Loading..."
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="28dp" />
                     <Button
                         android:id="@+id/edit_location_malayalam"
                         android:layout_marginLeft="20dp"
@@ -154,7 +154,7 @@
                         android:gravity="center"
                         android:text="തിരുത്തുക"
                         android:textColor="@android:color/white"
-                        android:textSize="22sp" />/>
+                        android:textSize="22dp" />/>
                     <Button
                         android:id="@+id/get_help_malayalam"
                         android:layout_width="match_parent"
@@ -306,3 +306,4 @@
 
         </RelativeLayout>
     </LinearLayout>
+</ScrollView>
