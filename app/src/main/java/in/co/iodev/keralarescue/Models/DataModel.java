@@ -1,7 +1,11 @@
 package in.co.iodev.keralarescue.Models;
 
 public class DataModel {
-    String number_of_people,lattitude,longitude,Locality,District,Battery_percentage;
+    String number_of_people,lattitude,longitude,Locality,District,Battery_percentage,TimeIndex;
+
+    public String getTimeIndex() {
+        return TimeIndex;
+    }
 
     public String getBattery_percentage() {
         return Battery_percentage;
@@ -49,5 +53,9 @@ public class DataModel {
 
     public void setNumber_of_people(String number_of_people) {
         this.number_of_people = number_of_people;
+    }
+
+    public void setTimeIndex(String timeIndex) {
+        TimeIndex = timeIndex;
     }
 }
