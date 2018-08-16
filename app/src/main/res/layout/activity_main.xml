@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -124,15 +124,43 @@
                     android:text="സഹായം തേടുക"
                     android:textColor="@android:color/white"
                     android:textSize="22dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="നിങ്ങളുടെ സ്ഥലം "
-                    android:textColor="@android:color/black"
-                    android:textSize="22dp" />
+                    android:orientation="vertical"
+                    android:id="@+id/help_status_malayalam">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:text="നിങ്ങളുടെ സ്ഥലം "
+                        android:textColor="@android:color/black"
+                        android:textSize="22dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/location_text_malayalam"
+                        android:layout_marginTop="10dp"
+                        android:text="Loading..."
+                        android:textColor="@android:color/black"
+                        android:textSize="28dp" />
+                    <Button
+                        android:layout_width="201dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:background="@android:color/black"
+                        android:gravity="center"
+                        android:id="@+id/edit_location_malayalam"
+                        android:text="തിരുത്തുക"
+                        android:textColor="@android:color/white"
+                        android:textSize="22dp" />
+
+                </LinearLayout>
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -233,24 +261,44 @@
                     android:text="GET HELP"
                     android:textColor="@android:color/white"
                     android:textSize="22dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="Your Current Location"
-                    android:textColor="@android:color/black"
-                    android:textSize="22dp" />
+                    android:id="@+id/help_status_english"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:text="Your Current Location"
+                        android:textColor="@android:color/black"
+                        android:textSize="22dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="Panamaram,Wayanadu"
-                    android:textColor="@android:color/black"
-                    android:textSize="28dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/location_text_english"
+                        android:layout_marginTop="10dp"
+                        android:text="Loading ..."
+                        android:textColor="@android:color/black"
+                        android:textSize="28dp" />
+
+                    <Button
+                        android:layout_width="201dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:background="@android:color/black"
+                        android:gravity="center"
+                        android:id="@+id/edit_location_english"
+                        android:text="Edit"
+                        android:textColor="@android:color/white"
+                        android:textSize="22dp" />
+
+                </LinearLayout>
+
 
                 <Button
                     android:layout_width="201dp"
