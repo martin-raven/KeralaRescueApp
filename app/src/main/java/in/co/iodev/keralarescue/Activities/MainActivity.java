@@ -295,6 +295,7 @@ public class MainActivity extends Activity {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
+            Toast.makeText(MainActivity.this, "Data Sent Success!!", Toast.LENGTH_SHORT).show();
             Log.d("data is being sent",result);
         }
     }
