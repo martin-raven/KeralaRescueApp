@@ -121,6 +121,7 @@ public class MainActivity extends Activity {
                 Help_English.setVisibility(View.GONE);
                 status_english.setVisibility(View.VISIBLE);
                 datatobesent.setNumber_of_people(num_of_people_english.getText().toString());
+
                 datatobesent.setTimeIndex(String.valueOf(System.currentTimeMillis()));
                 StringData=gson.toJson(datatobesent);
                 Log.d("Data in json ",StringData);
@@ -135,6 +136,7 @@ public class MainActivity extends Activity {
                 Help_malayalam.setVisibility(View.GONE);
                 status_malayalam.setVisibility(View.VISIBLE);
                 datatobesent.setNumber_of_people(num_of_people_malayalam.getText().toString());
+                datatobesent.setTimeIndex(String.valueOf(System.currentTimeMillis()));
                 StringData=gson.toJson(datatobesent);
                 Log.d("Data in json ",StringData);
                 new HTTPAsyncTask().execute(post_url);
