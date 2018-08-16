@@ -18,11 +18,18 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:support-annotations:26.1.0'
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
