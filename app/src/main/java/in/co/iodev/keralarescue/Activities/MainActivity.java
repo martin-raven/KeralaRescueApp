@@ -121,6 +121,7 @@ public class MainActivity extends Activity {
                 Help_English.setVisibility(View.GONE);
                 status_english.setVisibility(View.VISIBLE);
                 datatobesent.setNumber_of_people(num_of_people_english.getText().toString());
+                datatobesent.setTimeIndex(String.valueOf(System.currentTimeMillis()));
                 StringData=gson.toJson(datatobesent);
                 Log.d("Data in json ",StringData);
                 new HTTPAsyncTask().execute(post_url);
@@ -221,18 +222,21 @@ public class MainActivity extends Activity {
                         e.printStackTrace();
                     }
                     if (addresses.size() > 0) {
-                        datatobesent.setLattitude(String.valueOf(location.getLatitude()));
-                        datatobesent.setLongitude(String.valueOf(location.getLongitude()));
-                        datatobesent.setLocality(addresses.get(0).getLocality());
-                        datatobesent.setDistrict(addresses.get(0).getSubAdminArea());
-                        Log.d("District",addresses.get(0).getSubAdminArea());
-                        Log.d("Locality",addresses.get(0).getLocality());
-                        location_place_english.setText(addresses.get(0).getLocality());
-                        location_place_malayalam.setText(addresses.get(0).getLocality());
-                        String District=addresses.get(0).getSubAdminArea();
-                        status_english.setVisibility(View.VISIBLE);
-                        status_malayalam.setVisibility(View.VISIBLE);
-
+                        try {
+                            datatobesent.setLattitude(String.valueOf(location.getLatitude()));
+                            datatobesent.setLongitude(String.valueOf(location.getLongitude()));
+                            datatobesent.setLocality(addresses.get(0).getLocality());
+                            datatobesent.setDistrict(addresses.get(0).getSubAdminArea());
+                            Log.d("District", addresses.get(0).getSubAdminArea());
+                            if(addresses.get(0).getLocality()!=null)
+                                Log.d("Locality", addresses.get(0).getLocality());
+                            location_place_english.setText(addresses.get(0).getLocality());
+                            location_place_malayalam.setText(addresses.get(0).getLocality());
+                            String District = addresses.get(0).getSubAdminArea();
+                            status_english.setVisibility(View.VISIBLE);
+                            status_malayalam.setVisibility(View.VISIBLE);
+                        }catch (Exception e)
+                        {e.printStackTrace();}
                     }
 
                 }
@@ -297,7 +301,7 @@ public class MainActivity extends Activity {
 
         URL url = new URL(myUrl);
 
-        // 1. create HttpURLConnection
+        // 1. create HttpURLConnection Error!
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
