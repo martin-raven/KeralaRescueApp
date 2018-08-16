@@ -296,6 +296,12 @@ public class MainActivity extends Activity {
         @Override
         protected void onPostExecute(String result) {
             Log.d("data is being sent",result);
+             if (result.equals("OK")){
+                Toast.makeText(MainActivity.this, "Data Successfully Send!!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(MainActivity.this, "Error In sending Data", Toast.LENGTH_SHORT).show();
+            }
         }
     }
     private String HttpPost(String myUrl) throws IOException {
