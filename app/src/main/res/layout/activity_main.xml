@@ -6,39 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.MainActivity">
+    tools:context=".MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingBottom="10dp">
-    <LinearLayout
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:background="@drawable/cornered_edges">
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:background="@drawable/cornered_edges">
 
-        <Button
-            android:id="@+id/malayalam"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@drawable/cornered_edges_malayalam_selected"
-            android:text="മലയാളം"
-            android:textColor="@android:color/white" />
-        <Button
-            android:id="@+id/english"
-            android:text="English"
-            android:background="@drawable/cornered_edges_english_deselected"
-            android:textColor="@android:color/black"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/malayalam"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/cornered_edges_malayalam_selected"
+                android:text="മലയാളം"
+                android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/english"
+                android:text="English"
+                android:background="@drawable/cornered_edges_english_deselected"
+                android:textColor="@android:color/black"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -99,17 +99,17 @@
                     android:textColor="@android:color/black"
                     android:textSize="28dp" />
                 <EditText
-                android:background="@drawable/rounded_edge_noofpeopple"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_height="50dp"
-                android:layout_width="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
+                    android:background="@drawable/rounded_edge_noofpeopple"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:inputType="number"
-                android:layout_marginTop="10dp"
-                android:textColor="@android:color/black"
-                android:textSize="28dp" />
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="28dp" />
 
                 <Button
                     android:id="@+id/get_help_malayalam"
@@ -124,6 +124,7 @@
                     android:text="സഹായം തേടുക"
                     android:textColor="@android:color/white"
                     android:textSize="22dp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -138,6 +139,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="22dp" />
 
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -148,38 +150,21 @@
                         android:textColor="@android:color/black"
                         android:textSize="28dp" />
                     <Button
-                        android:layout_width="201dp"
+                        android:id="@+id/edit_location_malayalam"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
-                        android:background="@android:color/black"
+                        android:background="@drawable/rounded_edge_edit_button"
                         android:gravity="center"
-                        android:id="@+id/edit_location_malayalam"
                         android:text="തിരുത്തുക"
                         android:textColor="@android:color/white"
-                        android:textSize="22dp" />
+                        android:textSize="22dp" />/>
 
                 </LinearLayout>
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="Panamaram,Wayanadu"
-                    android:textColor="@android:color/black"
-                    android:textSize="28dp" />
-                <Button
-                    android:layout_width="201dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/rounded_edge_edit_button"
-                    android:gravity="center"
-                    android:text="തിരുത്തുക"
-                    android:textColor="@android:color/white"
-                    android:textSize="22dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -261,17 +246,18 @@
                     android:text="GET HELP"
                     android:textColor="@android:color/white"
                     android:textSize="22dp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/help_status_english"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:id="@+id/help_status_english">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
-                        android:text="Your Current Location"
+                        android:text="Your current location "
                         android:textColor="@android:color/black"
                         android:textSize="22dp" />
 
@@ -281,35 +267,24 @@
                         android:layout_gravity="center"
                         android:id="@+id/location_text_english"
                         android:layout_marginTop="10dp"
-                        android:text="Loading ..."
+                        android:text="Loading..."
                         android:textColor="@android:color/black"
                         android:textSize="28dp" />
-
                     <Button
-                        android:layout_width="201dp"
+                        android:id="@+id/edit_location_english"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
-                        android:background="@android:color/black"
+                        android:background="@drawable/rounded_edge_edit_button"
                         android:gravity="center"
-                        android:id="@+id/edit_location_english"
                         android:text="Edit"
                         android:textColor="@android:color/white"
-                        android:textSize="22dp" />
+                        android:textSize="22dp" />/>
 
                 </LinearLayout>
-
-
-                <Button
-                    android:layout_width="201dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/rounded_edge_edit_button"
-                    android:gravity="center"
-                    android:text="Edit"
-                    android:textColor="@android:color/white"
-                    android:textSize="22dp" />
             </LinearLayout>
 
         </RelativeLayout>
