@@ -5,10 +5,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.BatteryManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,22 +19,39 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 
 public class MainActivity extends Activity {
-    Button Malayalam;
-    Button English;
+    Button Malayalam, English, Help_English, Help_malayalam;
     LinearLayout Malayal_layout;
     LinearLayout English_layout;
 
 
     String batteryPercentage;
-    private FusedLocationProviderClient mFusedLocationClient;
 
     private View.OnClickListener Inform_btn_listerner = new View.OnClickListener() {
         public void onClick(View view) {
             batteryPercentage = getBatteryPercentage();
+        }
+    };
+    private final LocationListener mLocationListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(final Location location) {
+            //your code here
+        }
+
+        @Override
+        public void onStatusChanged(String s, int i, Bundle bundle) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String s) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String s) {
+
         }
     };
 
@@ -44,8 +64,11 @@ public class MainActivity extends Activity {
         English = findViewById(R.id.english);
         Malayal_layout = findViewById(R.id.malayalam_layout);
         English_layout = findViewById(R.id.english_layout);
+        Help_English = findViewById(R.id.get_help_english);
+        Help_malayalam = findViewById(R.id.get_help_malayalam);
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        Help_English.setOnClickListener(Inform_btn_listerner);
+        Help_malayalam.setOnClickListener(Inform_btn_listerner);
 
         Malayalam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,12 +93,6 @@ public class MainActivity extends Activity {
                 English_layout.setVisibility(View.VISIBLE);
             }
         });
-
-        Button Inform_btn = null;
-//        Inform_btn = findViewById()
-//        Inform_btn.setOnClickListener(Inform_btn_listerner);
-        getBatteryPercentage();
-
     }
 
     String getBatteryPercentage() {
@@ -90,18 +107,22 @@ public class MainActivity extends Activity {
     }
 
     String getLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return "WIP";
+        LocationManager mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    Activity#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
+                return "TODO";
+            }
         }
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10,
+                100, mLocationListener);
         return "WIP";
     }
-
-
 }
