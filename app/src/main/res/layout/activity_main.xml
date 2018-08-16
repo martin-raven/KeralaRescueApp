@@ -98,16 +98,19 @@
                     android:text="ആളുകളുടെ എണ്ണം"
                     android:textColor="@android:color/black"
                     android:textSize="28dp" />
+
                 <EditText
-                    android:background="@drawable/rounded_edge_noofpeopple"
+                    android:id="@+id/no_of_people_malayalam"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:layout_height="50dp"
-                    android:layout_width="match_parent"
-                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_edge_noofpeopple"
                     android:gravity="center"
                     android:inputType="number"
-                    android:layout_marginTop="10dp"
+                    android:text="1"
                     android:textColor="@android:color/black"
                     android:textSize="28dp" />
 
@@ -129,7 +132,7 @@
 
 
                     <EditText
-                        android:editable="false"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -223,6 +226,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="28dp" />
                 <EditText
+                    android:id="@+id/no_of_people_english"
                     android:background="@drawable/rounded_edge_noofpeopple"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
@@ -231,6 +235,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:inputType="number"
+                    android:text="1"
                     android:layout_marginTop="10dp"
                     android:textColor="@android:color/black"
                     android:textSize="28dp" />
@@ -253,7 +258,7 @@
 
                     <EditText
                         android:background="@android:color/transparent"
-                        android:editable="false"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

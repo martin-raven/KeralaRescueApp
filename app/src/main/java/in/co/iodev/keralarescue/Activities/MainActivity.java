@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.BatteryManager;
 import android.graphics.Color;
 import android.os.Build;
@@ -31,20 +32,34 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.gson.Gson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 import java.util.Locale;
 
+import in.co.iodev.keralarescue.Models.DataModel;
 import in.co.iodev.keralarescue.R;
 
 
 public class MainActivity extends Activity {
     private static final int LOCATION_PERMISSIONS_REQUEST = 10;
     Button Malayalam, English, Help_English, Help_malayalam;
-    LinearLayout Malayal_layout,status_malayalam;
+    LinearLayout Malayalam_layout,status_malayalam;
     LinearLayout English_layout,status_english;
-    EditText location_place_english, location_place_malayalam;
+    EditText location_place_english, location_place_malayalam,num_of_people_english,num_of_people_malayalam;
+    Boolean enlish_selected=true;
+    DataModel datatobesent=new DataModel();
+    Gson gson = new Gson();
+    String StringData,post_url="https://byw1s98hik.execute-api.ap-south-1.amazonaws.com/dev/androidapp/post";
     public static final int LOCATION_UPDATE_INTERVAL = 10;  //mins
 
 
@@ -64,15 +79,20 @@ public class MainActivity extends Activity {
 
         Malayalam = findViewById(R.id.malayalam);
         English = findViewById(R.id.english);
-        Malayal_layout = findViewById(R.id.malayalam_layout);
+        Malayalam_layout = findViewById(R.id.malayalam_layout);
         English_layout = findViewById(R.id.english_layout);
         Help_English = findViewById(R.id.get_help_english);
         Help_malayalam = findViewById(R.id.get_help_malayalam);
+        location_place_english = findViewById(R.id.location_text_english);
+        location_place_malayalam = findViewById(R.id.location_text_malayalam);
 
         status_english = findViewById(R.id.help_status_english);
         status_malayalam = findViewById(R.id.help_status_malayalam);
         status_malayalam.setVisibility(View.GONE);
         status_english.setVisibility(View.GONE);
+
+        num_of_people_english=findViewById(R.id.no_of_people_english);
+        num_of_people_malayalam=findViewById(R.id.no_of_people_malayalam);
 
         findViewById(R.id.edit_location_english).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,15 +113,17 @@ public class MainActivity extends Activity {
         batteryPercentage = getBatteryPercentage();
         getLocation();
 
-       /* Help_English.setOnClickListener(new View.OnClickListener() {
+        Help_English.setOnClickListener(new View.OnClickListener() {
           @Override
             public void onClick(View view) {
                 batteryPercentage = getBatteryPercentage();
                 getLocation();
-
                 Help_English.setVisibility(View.GONE);
                 status_english.setVisibility(View.VISIBLE);
-
+                datatobesent.setNumber_of_people(num_of_people_english.getText().toString());
+                StringData=gson.toJson(datatobesent);
+                Log.d("Data in json ",StringData);
+                new HTTPAsyncTask().execute(post_url);
             }
         });
         Help_malayalam.setOnClickListener(new View.OnClickListener() {
@@ -109,11 +131,14 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 batteryPercentage = getBatteryPercentage();
                 getLocation();
-
                 Help_malayalam.setVisibility(View.GONE);
                 status_malayalam.setVisibility(View.VISIBLE);
+                datatobesent.setNumber_of_people(num_of_people_malayalam.getText().toString());
+                StringData=gson.toJson(datatobesent);
+                Log.d("Data in json ",StringData);
+                new HTTPAsyncTask().execute(post_url);
             }
-        });*/
+        });
 
         Malayalam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,8 +147,9 @@ public class MainActivity extends Activity {
                 English.setBackgroundResource(R.drawable.cornered_edges_english_deselected);
                 Malayalam.setTextColor(Color.parseColor("#ffffff"));
                 English.setTextColor(Color.parseColor("#ff000000"));
-                Malayal_layout.setVisibility(View.VISIBLE);
+                Malayalam_layout.setVisibility(View.VISIBLE);
                 English_layout.setVisibility(View.INVISIBLE);
+                enlish_selected=false;
             }
         });
 
@@ -134,14 +160,12 @@ public class MainActivity extends Activity {
                 English.setBackgroundResource(R.drawable.cornered_edges_english_selected);
                 Malayalam.setTextColor(Color.parseColor("#ff000000"));
                 English.setTextColor(Color.parseColor("#ffffff"));
-                Malayal_layout.setVisibility(View.INVISIBLE);
+                Malayalam_layout.setVisibility(View.INVISIBLE);
                 English_layout.setVisibility(View.VISIBLE);
+                enlish_selected=true;
             }
         });
 
-
-        location_place_english = findViewById(R.id.location_text_english);
-        location_place_malayalam = findViewById(R.id.location_text_malayalam);
     }
 
     String getBatteryPercentage() {
@@ -152,6 +176,7 @@ public class MainActivity extends Activity {
         float batteryPct = level / (float) scale;
         float p = batteryPct * 100;
         Log.d("Battery percentage", String.valueOf(p));
+        datatobesent.setBattery_percentage(String.valueOf(Math.round(p)));
         return String.valueOf(Math.round(p));
     }
 
@@ -196,10 +221,15 @@ public class MainActivity extends Activity {
                         e.printStackTrace();
                     }
                     if (addresses.size() > 0) {
+                        datatobesent.setLattitude(String.valueOf(location.getLatitude()));
+                        datatobesent.setLongitude(String.valueOf(location.getLongitude()));
+                        datatobesent.setLocality(addresses.get(0).getLocality());
+                        datatobesent.setDistrict(addresses.get(0).getSubAdminArea());
+                        Log.d("District",addresses.get(0).getSubAdminArea());
+                        Log.d("Locality",addresses.get(0).getLocality());
                         location_place_english.setText(addresses.get(0).getLocality());
                         location_place_malayalam.setText(addresses.get(0).getLocality());
                         String District=addresses.get(0).getSubAdminArea();
-                        Toast.makeText(getApplicationContext(),District,Toast.LENGTH_SHORT).show();
                         status_english.setVisibility(View.VISIBLE);
                         status_malayalam.setVisibility(View.VISIBLE);
 
@@ -240,5 +270,49 @@ public class MainActivity extends Activity {
                 }
                 break;
         }
+    }
+    private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                try {
+                    return HttpPost(urls[0]);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                    return "Error!";
+                }
+            } catch (Exception e) {
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            Log.d("data is being sent",result);
+        }
+    }
+    private String HttpPost(String myUrl) throws IOException {
+        String result = "";
+
+        URL url = new URL(myUrl);
+
+        // 1. create HttpURLConnection
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+        OutputStream os = conn.getOutputStream();
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+        writer.write(StringData);
+        writer.flush();
+        writer.close();
+        os.close();
+
+        // 4. make POST request to the given URL
+        conn.connect();
+
+        // 5. return response message
+        return conn.getResponseMessage()+"";
+
     }
 }
