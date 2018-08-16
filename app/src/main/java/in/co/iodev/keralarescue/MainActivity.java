@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
     private final LocationListener mLocationListener = new LocationListener() {
         @Override
         public void onLocationChanged(final Location location) {
-            //your code here
+           Log.d("Location",location.toString());
         }
 
         @Override
