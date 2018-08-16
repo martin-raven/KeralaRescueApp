@@ -13,11 +13,11 @@
         android:orientation="vertical"
         android:paddingBottom="10dp">
     <LinearLayout
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:background="@drawable/cornered_edges">
@@ -26,7 +26,7 @@
             android:id="@+id/malayalam"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/cornered_edges_malayalam_selected"
             android:text="മലയാളം"
             android:textColor="@android:color/white" />
@@ -37,7 +37,7 @@
             android:textColor="@android:color/black"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
         <RelativeLayout
@@ -69,7 +69,7 @@
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="പ്രളയ ബാധിതർ സഹായം  തേടാൻ  താഴെ കാണുന്ന വലിയ കറുത്ത ബട്ടണിൽ അമർത്തുക. നിങ്ങളുടെ  ലൊക്കേഷനും  മറ്റു അത്യാവശ്യ വിവരങ്ങളും ദുരന്ത നിവാരണ സേനയിലേക്ക് ഉടൻ കൈമാറപ്പെടും."
-                    android:textColor="@color/colorGray"
+                    android:textColor="@android:color/black"
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
@@ -80,7 +80,7 @@
                     android:gravity="center"
                     android:text="ഇന്റര്നെറ്  സംവിധാനം  ഇല്ലാത്തവർ  താഴെ കാണുന്ന നമ്പറിൽ വിളിക്കുക"
                     android:textColor="@android:color/black"
-                    android:textSize="22dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -99,19 +99,24 @@
                     android:textColor="@android:color/black"
                     android:textSize="28dp" />
                 <EditText
-                    android:background="@drawable/rounded_edge_noofpeopple"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@android:color/black"
-                    android:textSize="28dp" />
+                android:background="@drawable/rounded_edge_noofpeopple"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                    android:inputType="number"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="28dp" />
 
                 <Button
                     android:id="@+id/get_help_malayalam"
-                    android:layout_width="201dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/cornered_edges_button"
@@ -142,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:background="@android:color/black"
+                    android:background="@drawable/rounded_edge_edit_button"
                     android:gravity="center"
                     android:text="തിരുത്തുക"
                     android:textColor="@android:color/white"
@@ -173,7 +178,7 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:text="Please use the black button below to share your location and other important information with the rescue authorities in case of an emergency"
-                    android:textColor="@color/colorGray"
+                    android:textColor="@android:color/black"
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
@@ -184,7 +189,7 @@
                     android:gravity="center"
                     android:text="In case of no internet connectivity please call to one of these numbers to get help"
                     android:textColor="@android:color/black"
-                    android:textSize="22dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -204,18 +209,23 @@
                     android:textSize="28dp" />
                 <EditText
                     android:background="@drawable/rounded_edge_noofpeopple"
-                    android:layout_width="150dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:layout_height="50dp"
+                    android:layout_width="match_parent"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:inputType="number"
                     android:layout_marginTop="10dp"
                     android:textColor="@android:color/black"
                     android:textSize="28dp" />
 
                 <Button
                     android:id="@+id/get_help_english"
-                    android:layout_width="201dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/cornered_edges_button"
@@ -247,7 +257,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:background="@android:color/black"
+                    android:background="@drawable/rounded_edge_edit_button"
                     android:gravity="center"
                     android:text="Edit"
                     android:textColor="@android:color/white"
