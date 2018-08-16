@@ -21,6 +21,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +44,7 @@ public class MainActivity extends Activity {
     Button Malayalam, English, Help_English, Help_malayalam;
     LinearLayout Malayal_layout,status_malayalam;
     LinearLayout English_layout,status_english;
-    TextView location_place_english, location_place_malayalam;
+    EditText location_place_english, location_place_malayalam;
     public static final int LOCATION_UPDATE_INTERVAL = 10;  //mins
 
 
@@ -73,12 +74,27 @@ public class MainActivity extends Activity {
         status_malayalam.setVisibility(View.GONE);
         status_english.setVisibility(View.GONE);
 
-        findViewById(R.id.edit_location_english).setOnClickListener(edit_location_listener);
-        findViewById(R.id.edit_location_malayalam).setOnClickListener(edit_location_listener);
-
-
-        Help_English.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.edit_location_english).setOnClickListener(new View.OnClickListener() {
             @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"test",Toast.LENGTH_SHORT).show();
+                location_place_english.setEnabled(true);
+            }
+        });
+        findViewById(R.id.edit_location_malayalam).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                location_place_malayalam.setEnabled(true);
+
+
+            }
+        });
+
+        batteryPercentage = getBatteryPercentage();
+        getLocation();
+
+       /* Help_English.setOnClickListener(new View.OnClickListener() {
+          @Override
             public void onClick(View view) {
                 batteryPercentage = getBatteryPercentage();
                 getLocation();
@@ -97,7 +113,7 @@ public class MainActivity extends Activity {
                 Help_malayalam.setVisibility(View.GONE);
                 status_malayalam.setVisibility(View.VISIBLE);
             }
-        });
+        });*/
 
         Malayalam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,6 +198,11 @@ public class MainActivity extends Activity {
                     if (addresses.size() > 0) {
                         location_place_english.setText(addresses.get(0).getLocality());
                         location_place_malayalam.setText(addresses.get(0).getLocality());
+                        String District=addresses.get(0).getSubAdminArea();
+                        Toast.makeText(getApplicationContext(),District,Toast.LENGTH_SHORT).show();
+                        status_english.setVisibility(View.VISIBLE);
+                        status_malayalam.setVisibility(View.VISIBLE);
+
                     }
 
                 }
