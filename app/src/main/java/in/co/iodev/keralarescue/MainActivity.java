@@ -64,12 +64,12 @@ public class MainActivity extends Activity {
         English = findViewById(R.id.english);
         Malayal_layout = findViewById(R.id.malayalam_layout);
         English_layout = findViewById(R.id.english_layout);
-        Help_English = findViewById(R.id.get_help_english);
+    /*    Help_English = findViewById(R.id.get_help_english);
         Help_malayalam = findViewById(R.id.get_help_malayalam);
 
         Help_English.setOnClickListener(Inform_btn_listerner);
         Help_malayalam.setOnClickListener(Inform_btn_listerner);
-
+*/
         Malayalam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

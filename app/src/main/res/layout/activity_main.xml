@@ -90,6 +90,23 @@
                     android:text="1070, 1074, 1077"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="32dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="ആളുകളുടെ എണ്ണം"
+                    android:textColor="@android:color/black"
+                    android:textSize="28dp" />
+                <EditText
+                    android:background="@drawable/rounded_edge_noofpeopple"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="28dp" />
 
                 <Button
                     android:layout_width="201dp"
@@ -176,6 +193,23 @@
                     android:text="1070, 1074, 1077"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="32dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="Number of people"
+                    android:textColor="@android:color/black"
+                    android:textSize="28dp" />
+                <EditText
+                    android:background="@drawable/rounded_edge_noofpeopple"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="28dp" />
 
                 <Button
                     android:layout_width="201dp"
