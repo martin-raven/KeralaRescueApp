@@ -70,8 +70,8 @@ public class MainActivity extends Activity {
     LinearLayout Malayalam_layout,status_malayalam;
     ProgressBar pg,pg1;
     LinearLayout English_layout,status_english;
-    EditText location_place_english, location_place_malayalam,num_of_people_english,num_of_people_malayalam;
-    TextView num_eng,num_mal,loc_eng,loc_mal;
+    EditText location_place_english, location_place_malayalam,num_of_people_english,num_of_people_malayalam,contact_number_malayalam,contact_number_english;
+    TextView num_eng,num_mal,loc_eng,loc_mal,contact_mal,contact_eng;
     Boolean enlish_selected=false;
     DataModel datatobesent=new DataModel();
     Gson gson = new Gson();
@@ -106,6 +106,8 @@ public class MainActivity extends Activity {
         location_place_malayalam = findViewById(R.id.location_text_malayalam);
         num_eng=findViewById(R.id.number_eng);
         num_mal=findViewById(R.id.number_mal);
+        contact_mal=findViewById(R.id.contact_number_text_malayalam);
+        contact_eng=findViewById(R.id.contact_number_text_english);
         pg=findViewById(R.id.progressBar_cyclic_eng);
         pg1=findViewById(R.id.progressBar_cyclic);
         loc_eng=findViewById(R.id.loc_eng);
@@ -119,6 +121,9 @@ public class MainActivity extends Activity {
 
         num_of_people_english=findViewById(R.id.no_of_people_english);
         num_of_people_malayalam=findViewById(R.id.no_of_people_malayalam);
+        contact_number_malayalam=findViewById(R.id.contact_number_edit_malayalam);
+        contact_number_english=findViewById(R.id.contact_number_edit_english);
+
         checkGPS();//to check  location is enabled or not
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         try {
@@ -135,7 +140,10 @@ public class MainActivity extends Activity {
                 num_of_people_malayalam.setVisibility(View.GONE);
                 num_eng.setVisibility(View.GONE);
                 num_mal.setVisibility(View.GONE);
-
+                contact_eng.setVisibility(View.GONE);
+                contact_mal.setVisibility(View.GONE);
+                contact_number_english.setVisibility(View.GONE);
+                contact_number_malayalam.setVisibility(View.GONE);
                 loc_eng.setVisibility(View.GONE);
                 loc_mal.setVisibility(View.GONE);
                 edit_loc_eng.setVisibility(View.GONE);
@@ -173,7 +181,7 @@ public class MainActivity extends Activity {
                 Help_English.setVisibility(View.GONE);
                 status_english.setVisibility(View.VISIBLE);
                 datatobesent.setNumber_of_people(num_of_people_english.getText().toString());
-
+                datatobesent.setContactNumber(contact_number_english.getText().toString());
                 datatobesent.setTimeIndex(String.valueOf(System.currentTimeMillis()));
                 StringData=gson.toJson(datatobesent);
                 Log.d("Data in json ",StringData);
@@ -189,6 +197,7 @@ public class MainActivity extends Activity {
                 Help_malayalam.setVisibility(View.GONE);
                 status_malayalam.setVisibility(View.VISIBLE);
                 datatobesent.setNumber_of_people(num_of_people_malayalam.getText().toString());
+                datatobesent.setContactNumber(contact_number_malayalam.getText().toString());
                 datatobesent.setTimeIndex(String.valueOf(System.currentTimeMillis()));
                 StringData=gson.toJson(datatobesent);
                 Log.d("Data in json ",StringData);
@@ -206,6 +215,9 @@ public class MainActivity extends Activity {
                 Malayalam_layout.setVisibility(View.VISIBLE);
                 English_layout.setVisibility(View.INVISIBLE);
                 enlish_selected=false;
+                Malayalam.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.selectedcheck,0,0,0);
+                English.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.deselectedcheck,0,0,0);
+
             }
         });
 
@@ -219,6 +231,8 @@ public class MainActivity extends Activity {
                 Malayalam_layout.setVisibility(View.INVISIBLE);
                 English_layout.setVisibility(View.VISIBLE);
                 enlish_selected=true;
+                English.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.selectedcheck,0,0,0);
+                Malayalam.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.deselectedcheck,0,0,0);
             }
         });
 
