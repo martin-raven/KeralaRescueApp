@@ -1,7 +1,23 @@
 package in.co.iodev.keralarescue.Models;
 
 public class DataModel {
-    String number_of_people,lattitude,longitude,Locality,District,Battery_percentage,TimeIndex;
+    String number_of_people;
+    String lattitude;
+    String longitude;
+    String Locality;
+    String District;
+    String Battery_percentage;
+    String TimeIndex;
+
+    public String getContactNumber() {
+        return ContactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        ContactNumber = contactNumber;
+    }
+
+    String ContactNumber;
 
     public String getTimeIndex() {
         return TimeIndex;
