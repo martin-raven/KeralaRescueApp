@@ -3,9 +3,11 @@ package in.co.iodev.keralarescue.Activities;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -68,6 +70,7 @@ public class MainActivity extends Activity {
     Boolean enlish_selected=false;
     DataModel datatobesent=new DataModel();
     Gson gson = new Gson();
+    SharedPreferences sharedPref;
     String StringData,post_url="https://byw1s98hik.execute-api.ap-south-1.amazonaws.com/dev/androidapp/post";
     public static final int LOCATION_UPDATE_INTERVAL = 10;  //mins
 
@@ -111,10 +114,30 @@ public class MainActivity extends Activity {
         num_of_people_english=findViewById(R.id.no_of_people_english);
         num_of_people_malayalam=findViewById(R.id.no_of_people_malayalam);
 
+        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        try {
+            String RequestStatus = sharedPref.getString(getResources().getString(R.string.IsRequestSent), null);
+            Log.d("Request Status", RequestStatus);
+            if(RequestStatus.equals("true")){
+                Help_English.setVisibility(View.GONE);
+                Success_english.setVisibility(View.VISIBLE);
+                Help_malayalam.setVisibility(View.GONE);
+                Success_malayalam.setVisibility(View.VISIBLE);
+                location_place_english.setVisibility(View.GONE);location_place_malayalam.setVisibility(View.GONE);num_of_people_english.setVisibility(View.GONE);num_of_people_malayalam.setVisibility(View.GONE);
+                num_eng.setVisibility(View.GONE);
+                num_mal.setVisibility(View.GONE);
+
+                loc_eng.setVisibility(View.GONE);
+                loc_mal.setVisibility(View.GONE);
+                edit_loc_eng.setVisibility(View.GONE);
+                edit_loc_mal.setVisibility(View.GONE);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         findViewById(R.id.edit_location_english).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"test",Toast.LENGTH_SHORT).show();
                 location_place_english.setEnabled(true);
             }
         });
@@ -202,7 +225,6 @@ public class MainActivity extends Activity {
 
     void getLocation() {
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                     new AlertDialog.Builder(this)
@@ -219,7 +241,6 @@ public class MainActivity extends Activity {
                 } else {
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
                 }
-//            }
         }
         getPosition();
     }
@@ -358,7 +379,10 @@ public class MainActivity extends Activity {
                 edit_loc_mal.setVisibility(View.GONE);
 
 
-                Toast.makeText(MainActivity.this, "Data Successfully Send!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Request Received by server", Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(getString(R.string.IsRequestSent), "true");
+                editor.apply();
             }
             else {
                 Toast.makeText(MainActivity.this, "Error In sending Data", Toast.LENGTH_SHORT).show();
@@ -383,6 +407,7 @@ public class MainActivity extends Activity {
 
         // 4. make POST request to the given URL
         conn.connect();
+        Log.d("Response",conn.getResponseMessage().toString());
 
         // 5. return response message
         return conn.getResponseMessage()+"";
