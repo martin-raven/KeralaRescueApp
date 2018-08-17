@@ -21,6 +21,22 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.DonateActivity"></activity>
+        <activity
+            android:name=".Request"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_request"
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RequestStatusActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_request_status"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>

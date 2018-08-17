@@ -22,7 +22,6 @@
     <string name="loading">Loading…</string>
     <string name="your_place">നിങ്ങളുടെ സ്ഥലം</string>
     <string name="Notice">അറിയിപ്പ്</string>
-
     <string name="desc_btn_bank_transfer">Bank Transfer</string>
     <string name="desc_btn_chk_ds">Cheque , DD</string>
     <string name="desc_btn_qr_code">Scan QR Code</string>
@@ -41,4 +40,14 @@
     <string name="cheque_dd_heading">Cheque/DD Payment</string>
     <string name="cheque_dd_message">Contributions can be made as Cheque/Demand Draft drawn in the name of Principal Secretary (Finance) payable at Thiruvananthapuram. Cheque / DD may be sent to:</string>
     <string name="cheque_dd_address">Principal Secretary (Finance),\nTreasurer\nChief Minister\'s Distress Relief Fund\nSecretariat\nThiruvananthapuram – 695 001\nKerala</string>
+
+    <string name="Contat">അറിയിപ്പ്</string>
+    <string name="contact_number__english">Contact Number</string>
+    <string name="contact_number__malayalam">വിളിക്കേണ്ട നമ്പർ</string>
+
+    <string name="title_activity_request">Request</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_request_status">RequestStatusActivity</string>
 </resources>

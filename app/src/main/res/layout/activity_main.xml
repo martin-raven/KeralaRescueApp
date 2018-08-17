@@ -24,6 +24,8 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/cornered_edges_malayalam_selected"
                 android:text="മലയാളം"
+                android:drawableLeft="@mipmap/selectedcheck"
+                android:paddingLeft="10dp"
                 android:textColor="@android:color/white" />
             <Button
                 android:id="@+id/english"
@@ -32,6 +34,8 @@
                 android:textColor="@android:color/black"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:drawableLeft="@mipmap/deselectedcheck"
+                android:paddingLeft="10dp"
                 android:layout_height="match_parent" />
         </LinearLayout>
 
@@ -91,6 +95,29 @@
                     android:text="@string/emergency_numbers"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="22sp" />
+                <TextView
+                    android:id="@+id/contact_number_text_malayalam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/contact_number__malayalam"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/contact_number_edit_malayalam"
+                    android:background="@drawable/rounded_edge_noofpeopple"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text=""
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/number_mal"
@@ -143,6 +170,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
                     <EditText
+                        android:background="@android:color/transparent"
                         android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -162,6 +190,8 @@
                         android:background="@drawable/rounded_edge_edit_button"
                         android:gravity="center"
                         android:text="@string/edit_option"
+                        android:drawableLeft="@mipmap/edit"
+                        android:paddingLeft="10dp"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
                     <Button
@@ -174,6 +204,8 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/rounded_edge_edit_button"
                         android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@mipmap/help"
                         android:text="@string/Get_help"
                         android:textColor="@android:color/white"
                         android:textSize="22sp" />
@@ -187,6 +219,8 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/rounded_edge_success_button"
                         android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@mipmap/help"
                         android:text="@string/recieved_request"
                         android:textColor="@android:color/white"
                         android:textSize="22sp"
@@ -241,7 +275,30 @@
                     android:text="@string/emergency_numbers"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="22sp" />
+                <TextView
+                    android:id="@+id/contact_number_text_english"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/contact_number__english"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
+                <EditText
+                    android:id="@+id/contact_number_edit_english"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_edge_noofpeopple"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text=""
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp" />
                 <TextView
                     android:id="@+id/number_eng"
                     android:layout_width="wrap_content"
@@ -315,6 +372,8 @@
                         android:background="@drawable/rounded_edge_edit_button"
                         android:gravity="center"
                         android:text="@string/edit"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@mipmap/edit"
                         android:textColor="@android:color/white"
 
                         android:textSize="22sp" />
@@ -329,6 +388,8 @@
                         android:background="@drawable/rounded_edge_edit_button"
                         android:gravity="center"
                         android:text="@string/get_help"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@mipmap/help"
                         android:textColor="@android:color/white"
                         android:textSize="22sp" />
 
@@ -343,6 +404,8 @@
                         android:background="@drawable/rounded_edge_success_button"
                         android:gravity="center"
                         android:text="@string/request_submitted"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@mipmap/help"
                         android:textColor="@android:color/white"
                         android:textSize="22sp"
                         android:visibility="gone" />
