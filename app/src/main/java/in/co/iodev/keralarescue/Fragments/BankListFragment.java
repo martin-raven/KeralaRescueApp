@@ -2,7 +2,7 @@ package in.co.iodev.keralarescue.Fragments;
 
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -55,7 +55,7 @@ public class BankListFragment extends Fragment {
 
                 QrCodeFragment fragment = new QrCodeFragment();
                 fragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager()
+                getActivity().getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment , fragment)
                         .addToBackStack(null)

@@ -1,7 +1,7 @@
 package in.co.iodev.keralarescue.Fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,21 +23,21 @@ public class DonateActivityFragment extends Fragment implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_bank_transfer:
-                getActivity().getSupportFragmentManager()
+                getActivity().getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment , new BankTransferFragment() , BankTransferFragment.TAG)
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.btn_chk_ds:
-                getActivity().getSupportFragmentManager()
+                getActivity().getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment , new ChequeDDFragment() , ChequeDDFragment.TAG)
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.btn_qr_code:
-                getActivity().getSupportFragmentManager()
+                getActivity().getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment , new BankListFragment(), BankListFragment.TAG)
                         .addToBackStack(null)

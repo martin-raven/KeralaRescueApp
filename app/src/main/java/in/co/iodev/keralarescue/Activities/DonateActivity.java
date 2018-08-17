@@ -1,13 +1,13 @@
 package in.co.iodev.keralarescue.Activities;
 
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
+import android.app.FragmentManager;
+import android.app.Activity;
 import android.os.Bundle;
 
 import in.co.iodev.keralarescue.Fragments.DonateActivityFragment;
 import in.co.iodev.keralarescue.R;
 
-public class DonateActivity extends AppCompatActivity {
+public class DonateActivity extends Activity {
 
     public static final String BACK_STACK_ROOT_TAG = "root_fragment";
     public FragmentManager fragmentManager;
@@ -16,7 +16,7 @@ public class DonateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate);
-        fragmentManager = getSupportFragmentManager();
+        fragmentManager = getFragmentManager();
         fragmentManager.popBackStack(BACK_STACK_ROOT_TAG , FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         fragmentManager.beginTransaction()
@@ -34,7 +34,7 @@ public class DonateActivity extends AppCompatActivity {
             //additional code
         }
         else {
-            getSupportFragmentManager().popBackStack();
+            getFragmentManager().popBackStack();
         }
     }
 }
