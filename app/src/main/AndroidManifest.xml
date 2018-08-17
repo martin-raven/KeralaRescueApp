@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.DonateActivity"></activity>
         <activity
             android:name=".Request"
             android:configChanges="orientation|keyboardHidden|screenSize"

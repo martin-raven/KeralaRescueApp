@@ -19,9 +19,28 @@
     <string name="recieved_request">അഭ്യർത്ഥന സ്വീകരിച്ചു</string>
     <string name="Get_help">സഹായം തേടുക</string>
     <string name="edit_option">തിരുത്തുക</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
     <string name="your_place">നിങ്ങളുടെ സ്ഥലം</string>
     <string name="Notice">അറിയിപ്പ്</string>
+    <string name="desc_btn_bank_transfer">Bank Transfer</string>
+    <string name="desc_btn_chk_ds">Cheque , DD</string>
+    <string name="desc_btn_qr_code">Scan QR Code</string>
+    <string name="desc_btn_vpa">Send with VPA</string>
+
+    <string name="activity_donate_go_back">GO BACK</string>
+    <string name="activity_donate_mode">Select Mode of Transfer</string>
+    <string name="bank_transfer_heading">Bank Transfer</string>
+    <string name="bank_transfer_bank_name">Bank: State Bank of India (SBI)</string>
+    <string name="bank_transfer_account_number">Account Number: 67319948232</string>
+    <string name="bank_transfer_branch">Branch : City Branch, Thiruvananthapuram</string>
+    <string name="bank_transfer_ifsc">IFSC : SBIN0070028</string>
+    <string name="bank_transfer_pan">PAN: AAAGD0584M</string>
+    <string name="bank_transfer_account_type">Account Type: Savings</string>
+    <string name="bank_transfer_swift_code">SWIFT CODE : SBININBBT08</string>
+    <string name="cheque_dd_heading">Cheque/DD Payment</string>
+    <string name="cheque_dd_message">Contributions can be made as Cheque/Demand Draft drawn in the name of Principal Secretary (Finance) payable at Thiruvananthapuram. Cheque / DD may be sent to:</string>
+    <string name="cheque_dd_address">Principal Secretary (Finance),\nTreasurer\nChief Minister\'s Distress Relief Fund\nSecretariat\nThiruvananthapuram – 695 001\nKerala</string>
+
     <string name="Contat">അറിയിപ്പ്</string>
     <string name="contact_number__english">Contact Number</string>
     <string name="contact_number__malayalam">വിളിക്കേണ്ട നമ്പർ</string>
@@ -31,5 +50,4 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="title_activity_request_status">RequestStatusActivity</string>
-
 </resources>
