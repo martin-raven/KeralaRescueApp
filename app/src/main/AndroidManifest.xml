@@ -14,14 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".Request"
+            android:name=".Activities.Request"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_request"
             android:theme="@style/FullscreenTheme">
@@ -32,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RequestStatusActivity"
+            android:name=".Activities.RequestStatusActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_request_status"
             android:theme="@style/FullscreenTheme"></activity>

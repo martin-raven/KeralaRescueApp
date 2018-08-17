@@ -9,6 +9,16 @@ public class DataModel {
     String Battery_percentage;
     String TimeIndex;
 
+    public String getAlternateContactNumber() {
+        return AlternateContactNumber;
+    }
+
+    public void setAlternateContactNumber(String alternateContactNumber) {
+        AlternateContactNumber = alternateContactNumber;
+    }
+
+    String AlternateContactNumber;
+
     public String getContactNumber() {
         return ContactNumber;
     }
