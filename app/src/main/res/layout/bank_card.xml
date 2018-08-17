@@ -1,0 +1,36 @@
+<android.support.v7.widget.CardView
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/card_bank_height"
+    android:layout_margin="@dimen/card_margin"
+    card_view:cardCornerRadius="@dimen/card_bank_radius"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="300dp"
+            android:layout_height="@dimen/img_bank_height"
+            android:contentDescription="Bank Icon"
+            android:clickable="true"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/bank_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/thumbnail"
+            android:paddingLeft="@dimen/bank_name_padding"
+            android:paddingRight="@dimen/bank_name_padding"
+            android:paddingTop="@dimen/bank_name_padding"
+            android:textColor="@color/bankNameTitle"
+            android:textSize="@dimen/bank_name" />
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
