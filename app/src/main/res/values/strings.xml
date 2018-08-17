@@ -26,4 +26,10 @@
     <string name="contact_number__english">Contact Number</string>
     <string name="contact_number__malayalam">വിളിക്കേണ്ട നമ്പർ</string>
 
+    <string name="title_activity_request">Request</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_request_status">RequestStatusActivity</string>
+
 </resources>
