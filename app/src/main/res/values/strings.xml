@@ -8,4 +8,5 @@
     <string name="current_location">Your current location</string>
     <string name="no_internet_text_malayalam">ഇന്റര്നെറ് സംവിധാനം ഇല്ലാത്തവർ താഴെ കാണുന്ന നമ്പറിൽ വിളിക്കുക</string>
     <string name="number_of_people_malayalam">ആളുകളുടെ എണ്ണം</string>
+    <string name="IsRequestSent">RequestStatus</string>
 </resources>
