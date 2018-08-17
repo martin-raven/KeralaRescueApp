@@ -37,12 +37,10 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
@@ -50,6 +48,8 @@ import java.util.Locale;
 
 import in.co.iodev.keralarescue.Models.DataModel;
 import in.co.iodev.keralarescue.R;
+
+
 //import okhttp3.Call;
 //import okhttp3.Callback;
 //import okhttp3.OkHttpClient;
@@ -57,18 +57,18 @@ import in.co.iodev.keralarescue.R;
 //import okhttp3.Response;
 
 
+
 public class MainActivity extends Activity {
     private static final int LOCATION_PERMISSIONS_REQUEST = 10;
-    Button Malayalam, English, Help_English, Help_malayalam;
+    Button Malayalam, English, Help_English, Help_malayalam, Success_malayalam,Success_english,edit_loc_eng,edit_loc_mal;
     LinearLayout Malayalam_layout,status_malayalam;
     LinearLayout English_layout,status_english;
     EditText location_place_english, location_place_malayalam,num_of_people_english,num_of_people_malayalam;
-    Boolean enlish_selected=true;
+    TextView num_eng,num_mal,loc_eng,loc_mal;
+    Boolean enlish_selected=false;
     DataModel datatobesent=new DataModel();
     Gson gson = new Gson();
-    TextView noticeText,noticeEng;
-    String StringData;
-    private static final String post_url= "https://byw1s98hik.execute-api.ap-south-1.amazonaws.com/dev/androidapp/post";
+    String StringData,post_url="https://byw1s98hik.execute-api.ap-south-1.amazonaws.com/dev/androidapp/post";
     public static final int LOCATION_UPDATE_INTERVAL = 10;  //mins
 
 
@@ -86,27 +86,30 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        noticeText = findViewById(R.id.noticeText);
-        noticeEng = findViewById(R.id.noticeEnglish);
         Malayalam = findViewById(R.id.malayalam);
         English = findViewById(R.id.english);
         Malayalam_layout = findViewById(R.id.malayalam_layout);
         English_layout = findViewById(R.id.english_layout);
         Help_English = findViewById(R.id.get_help_english);
         Help_malayalam = findViewById(R.id.get_help_malayalam);
+        Success_english = findViewById(R.id.success);
+        Success_malayalam = findViewById(R.id.success_malayalam);
         location_place_english = findViewById(R.id.location_text_english);
         location_place_malayalam = findViewById(R.id.location_text_malayalam);
+        num_eng=findViewById(R.id.number_eng);
+        num_mal=findViewById(R.id.number_mal);
 
+        loc_eng=findViewById(R.id.loc_eng);
+        loc_mal=findViewById(R.id.loc_mal);
+        edit_loc_eng=findViewById(R.id.edit_location_english);
+        edit_loc_mal=findViewById(R.id.edit_location_malayalam);
         status_english = findViewById(R.id.help_status_english);
         status_malayalam = findViewById(R.id.help_status_malayalam);
-        //status_malayalam.setVisibility(View.GONE);
-        //status_english.setVisibility(View.GONE);
+        status_malayalam.setVisibility(View.GONE);
+        status_english.setVisibility(View.GONE);
 
         num_of_people_english=findViewById(R.id.no_of_people_english);
         num_of_people_malayalam=findViewById(R.id.no_of_people_malayalam);
-
-        noticeText.setSelected(true);
-        noticeEng.setSelected(true);
 
         findViewById(R.id.edit_location_english).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,12 +131,12 @@ public class MainActivity extends Activity {
         getLocation();
 
         Help_English.setOnClickListener(new View.OnClickListener() {
-          @Override
+            @Override
             public void onClick(View view) {
                 batteryPercentage = getBatteryPercentage();
                 getLocation();
-                //Help_English.setVisibility(View.GONE);
-                //status_english.setVisibility(View.VISIBLE);
+                Help_English.setVisibility(View.GONE);
+                status_english.setVisibility(View.VISIBLE);
                 datatobesent.setNumber_of_people(num_of_people_english.getText().toString());
 
                 datatobesent.setTimeIndex(String.valueOf(System.currentTimeMillis()));
@@ -152,7 +155,7 @@ public class MainActivity extends Activity {
                 datatobesent.setNumber_of_people(num_of_people_malayalam.getText().toString());
                 datatobesent.setTimeIndex(String.valueOf(System.currentTimeMillis()));
                 StringData=gson.toJson(datatobesent);
-                Log.e("Data in json ",StringData);
+                Log.d("Data in json ",StringData);
                 new HTTPAsyncTask().execute(post_url);
             }
         });
@@ -317,7 +320,6 @@ public class MainActivity extends Activity {
 //    }
 
 
-
     private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -336,12 +338,27 @@ public class MainActivity extends Activity {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
+            Toast.makeText(MainActivity.this, "Data Sent Success!!", Toast.LENGTH_SHORT).show();
 
             Log.d("data is being sent",result);
-            Toast.makeText(MainActivity.this, "Request  Sent Success!!", Toast.LENGTH_SHORT).show();
-            Log.d("data is being sent",result);
-             if (result.equals("OK")){
-                Toast.makeText(MainActivity.this, "Request Successfully Recieved!!", Toast.LENGTH_SHORT).show();
+            if (result.equals("OK")){
+
+
+                Help_English.setVisibility(View.GONE);
+                Success_english.setVisibility(View.VISIBLE);
+                Help_malayalam.setVisibility(View.GONE);
+                Success_malayalam.setVisibility(View.VISIBLE);
+                location_place_english.setVisibility(View.GONE);location_place_malayalam.setVisibility(View.GONE);num_of_people_english.setVisibility(View.GONE);num_of_people_malayalam.setVisibility(View.GONE);
+                num_eng.setVisibility(View.GONE);
+                num_mal.setVisibility(View.GONE);
+
+                loc_eng.setVisibility(View.GONE);
+                loc_mal.setVisibility(View.GONE);
+                edit_loc_eng.setVisibility(View.GONE);
+                edit_loc_mal.setVisibility(View.GONE);
+
+
+                Toast.makeText(MainActivity.this, "Data Successfully Send!!", Toast.LENGTH_SHORT).show();
             }
             else {
                 Toast.makeText(MainActivity.this, "Error In sending Data", Toast.LENGTH_SHORT).show();
