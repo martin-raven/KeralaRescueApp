@@ -9,4 +9,6 @@
     <string name="no_internet_text_malayalam">ഇന്റര്നെറ് സംവിധാനം ഇല്ലാത്തവർ താഴെ കാണുന്ന നമ്പറിൽ വിളിക്കുക</string>
     <string name="number_of_people_malayalam">ആളുകളുടെ എണ്ണം</string>
     <string name="IsRequestSent">RequestStatus</string>
+    <string name="gps_network_not_enabled">Please Enable Location to Share Your Current Location to Rescue Team</string>
+    <string name="open_location_settings">Enable Now</string>
 </resources>
