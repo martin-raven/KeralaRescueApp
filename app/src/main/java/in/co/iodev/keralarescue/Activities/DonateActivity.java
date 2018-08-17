@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import in.co.iodev.keralarescue.Fragments.DonateActivityFragment;
 import in.co.iodev.keralarescue.R;
 
 public class DonateActivity extends AppCompatActivity {
@@ -33,7 +34,7 @@ public class DonateActivity extends AppCompatActivity {
             //additional code
         }
         else {
-            getFragmentManager().popBackStack();
+            getSupportFragmentManager().popBackStack();
         }
     }
 }

@@ -4,5 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorGray">#636363</color>
-
+    <color name="bankNameTitle"></color>
 </resources>

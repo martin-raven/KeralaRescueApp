@@ -55,7 +55,7 @@ public class BankListFragment extends Fragment {
 
                 QrCodeFragment fragment = new QrCodeFragment();
                 fragment.setArguments(bundle);
-                getActivity().getFragmentManager()
+                getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment , fragment)
                         .addToBackStack(null)

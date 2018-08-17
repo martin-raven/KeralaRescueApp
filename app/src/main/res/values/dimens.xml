@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_bank_radius">2dp</dimen>
+    <dimen name="img_bank_height">103dp</dimen>
+    <dimen name="card_bank_height">150dp</dimen>
+    <dimen name="bank_name_padding">10dp</dimen>
+    <dimen name="bank_name">15sp</dimen>
+</resources>
