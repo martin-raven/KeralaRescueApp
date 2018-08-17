@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">KeralaRescue</string>
+    <string name="notice_text_malayalam">പ്രളയ ബാധിതർ സഹായം തേടാൻ താഴെ കാണുന്ന വലിയ കറുത്ത ബട്ടണിൽ അമർത്തുക. നിങ്ങളുടെ ലൊക്കേഷനും മറ്റു അത്യാവശ്യ വിവരങ്ങളും ദുരന്ത നിവാരണ സേനയിലേക്ക് ഉടൻ കൈമാറപ്പെടും.</string>
+    <string name="notice_text_english">Please use the black button below to share your location and other important information with the rescue authorities in case of an emergency</string>
+    <string name="no_internet_text_english">In case of no internet connectivity please call to one of these numbers to get help</string>
+    <string name="emergency_numbers">1070, 1074, 1077</string>
+    <string name="number_of_people_english">Number of people</string>
+    <string name="current_location">Your current location</string>
+    <string name="no_internet_text_malayalam">ഇന്റര്നെറ് സംവിധാനം ഇല്ലാത്തവർ താഴെ കാണുന്ന നമ്പറിൽ വിളിക്കുക</string>
+    <string name="number_of_people_malayalam">ആളുകളുടെ എണ്ണം</string>
     <string name="IsRequestSent">RequestStatus</string>
 </resources>

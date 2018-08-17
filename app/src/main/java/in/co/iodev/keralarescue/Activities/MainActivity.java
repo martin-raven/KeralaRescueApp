@@ -23,6 +23,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -139,14 +140,16 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 location_place_english.setEnabled(true);
+                location_place_english.requestFocus();
+                showKeyboard(English_layout);
             }
         });
         findViewById(R.id.edit_location_malayalam).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 location_place_malayalam.setEnabled(true);
-
-
+                location_place_malayalam.requestFocus();
+                showKeyboard(Malayalam_layout);
             }
         });
 
@@ -339,7 +342,13 @@ public class MainActivity extends Activity {
 //            }
 //        });
 //    }
-
+private void showKeyboard(LinearLayout layout){
+    InputMethodManager inputMethodManager =
+            (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+    inputMethodManager.toggleSoftInputFromWindow(
+            layout.getApplicationWindowToken(),
+            InputMethodManager.SHOW_FORCED, 0);
+}
 
     private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
         @Override
