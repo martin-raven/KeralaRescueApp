@@ -284,18 +284,19 @@
                     android:text="@string/contact_number__english"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
+
                 <EditText
                     android:id="@+id/contact_number_edit_english"
-                    android:background="@drawable/rounded_edge_noofpeopple"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:layout_height="50dp"
-                    android:layout_width="match_parent"
-                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_edge_noofpeopple"
                     android:gravity="center"
                     android:inputType="number"
                     android:text=""
-                    android:layout_marginTop="10dp"
                     android:textColor="@android:color/black"
                     android:textSize="22sp" />
                 <TextView
