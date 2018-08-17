@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
 <LinearLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingBottom="10dp">
         <LinearLayout
@@ -54,7 +54,7 @@
                     android:layout_marginTop="40dp"
                     android:text="അറിയിപ്പ്"
                     android:textColor="@android:color/black"
-                    android:textSize="32dp"
+                    android:textSize="32sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -63,9 +63,9 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="പ്രളയ ബാധിതർ സഹായം  തേടാൻ  താഴെ കാണുന്ന വലിയ കറുത്ത ബട്ടണിൽ അമർത്തുക. നിങ്ങളുടെ  ലൊക്കേഷനും  മറ്റു അത്യാവശ്യ വിവരങ്ങളും ദുരന്ത നിവാരണ സേനയിലേക്ക് ഉടൻ കൈമാറപ്പെടും."
+                    android:text="@string/notice_text_malayalam"
                     android:textColor="@android:color/black"
-                    android:textSize="22dp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -73,18 +73,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="ഇന്റര്നെറ്  സംവിധാനം  ഇല്ലാത്തവർ  താഴെ കാണുന്ന നമ്പറിൽ വിളിക്കുക"
+                    android:text="@string/no_internet_text_malayalam"
                     android:textColor="@android:color/black"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:text="1070, 1074, 1077"
+                    android:text="@string/emergency_numbers"
                     android:textColor="@android:color/holo_red_dark"
-                    android:textSize="32dp" />
+                    android:textSize="32sp" />
 
                 <TextView
                     android:id="@+id/number_mal"
@@ -92,9 +92,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="ആളുകളുടെ എണ്ണം"
+                    android:text="@string/number_of_people_malayalam"
                     android:textColor="@android:color/black"
-                    android:textSize="28dp" />
+                    android:textSize="28sp" />
 
                 <EditText
                     android:id="@+id/no_of_people_malayalam"
@@ -109,7 +109,7 @@
                     android:inputType="number"
                     android:text="1"
                     android:textColor="@android:color/black"
-                    android:textSize="28dp" />
+                    android:textSize="28sp" />
 
 
 
@@ -127,7 +127,7 @@
                         android:layout_marginTop="10dp"
                         android:text="നിങ്ങളുടെ സ്ഥലം "
                         android:textColor="@android:color/black"
-                        android:textSize="22dp" />
+                        android:textSize="22sp" />
 
 
                     <EditText
@@ -139,7 +139,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Loading..."
                         android:textColor="@android:color/black"
-                        android:textSize="28dp" />
+                        android:textSize="28sp" />
                     <Button
                         android:id="@+id/edit_location_malayalam"
                         android:layout_marginLeft="20dp"
@@ -152,7 +152,7 @@
                         android:gravity="center"
                         android:text="തിരുത്തുക"
                         android:textColor="@android:color/white"
-                        android:textSize="22dp" />/>
+                        android:textSize="22sp" />
                     <Button
                         android:id="@+id/get_help_malayalam"
                         android:layout_width="match_parent"
@@ -165,7 +165,7 @@
                         android:gravity="center"
                         android:text="സഹായം തേടുക"
                         android:textColor="@android:color/white"
-                        android:textSize="22dp" />
+                        android:textSize="22sp" />
                     <Button
                         android:id="@+id/success_malayalam"
                         android:layout_width="match_parent"
@@ -178,7 +178,7 @@
                         android:gravity="center"
                         android:text="അഭ്യർത്ഥന സ്വീകരിച്ചു "
                         android:textColor="@android:color/white"
-                        android:textSize="22dp"
+                        android:textSize="22sp"
                         android:visibility="gone" />
 
                 </LinearLayout>
@@ -201,16 +201,16 @@
                     android:layout_marginTop="40dp"
                     android:text="Notice"
                     android:textColor="@android:color/black"
-                    android:textSize="32dp" />
+                    android:textSize="32sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="Please use the black button below to share your location and other important information with the rescue authorities in case of an emergency"
+                    android:text="@string/notice_text_english"
                     android:textColor="@android:color/black"
-                    android:textSize="22dp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -218,18 +218,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="In case of no internet connectivity please call to one of these numbers to get help"
+                    android:text="@string/no_internet_text_english"
                     android:textColor="@android:color/black"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:text="1070, 1074, 1077"
+                    android:text="@string/emergency_numbers"
                     android:textColor="@android:color/holo_red_dark"
-                    android:textSize="32dp" />
+                    android:textSize="32sp" />
 
                 <TextView
                     android:id="@+id/number_eng"
@@ -237,9 +237,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="Number of people"
+                    android:text="@string/number_of_people_english"
                     android:textColor="@android:color/black"
-                    android:textSize="28dp" />
+                    android:textSize="28sp" />
                 <EditText
                     android:id="@+id/no_of_people_english"
                     android:background="@drawable/rounded_edge_noofpeopple"
@@ -253,7 +253,7 @@
                     android:text="1"
                     android:layout_marginTop="10dp"
                     android:textColor="@android:color/black"
-                    android:textSize="28dp" />
+                    android:textSize="28sp" />
 
 
 
@@ -269,9 +269,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
-                        android:text="Your current location "
+                        android:text="@string/current_location"
                         android:textColor="@android:color/black"
-                        android:textSize="22dp" />
+                        android:textSize="22sp" />
 
                     <EditText
                         android:background="@android:color/transparent"
@@ -283,7 +283,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Loading..."
                         android:textColor="@android:color/black"
-                        android:textSize="28dp" />
+                        android:textSize="28sp" />
                     <Button
                         android:id="@+id/edit_location_english"
                         android:layout_marginLeft="20dp"
@@ -296,7 +296,7 @@
                         android:gravity="center"
                         android:text="Edit"
                         android:textColor="@android:color/white"
-                        android:textSize="22dp" />/>
+                        android:textSize="22sp" />
                     <Button
                         android:id="@+id/get_help_english"
                         android:layout_width="match_parent"
@@ -309,7 +309,7 @@
                         android:gravity="center"
                         android:text="GET HELP"
                         android:textColor="@android:color/white"
-                        android:textSize="22dp" />
+                        android:textSize="22sp" />
 
                     <Button
                         android:id="@+id/success"
@@ -323,7 +323,7 @@
                         android:gravity="center"
                         android:text="REQUEST SUBMITTED"
                         android:textColor="@android:color/white"
-                        android:textSize="22dp"
+                        android:textSize="22sp"
                         android:visibility="gone" />
 
                 </LinearLayout>
