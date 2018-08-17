@@ -261,8 +261,8 @@ public class MainActivity extends Activity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    try {
                     if (addresses.size() > 0) {
-                        try {
                             datatobesent.setLattitude(String.valueOf(location.getLatitude()));
                             datatobesent.setLongitude(String.valueOf(location.getLongitude()));
                             datatobesent.setLocality(addresses.get(0).getLocality());
@@ -272,12 +272,12 @@ public class MainActivity extends Activity {
                                 Log.d("Locality", addresses.get(0).getLocality());
                             location_place_english.setText(addresses.get(0).getLocality());
                             location_place_malayalam.setText(addresses.get(0).getLocality());
-                            String District = addresses.get(0).getSubAdminArea();
                             status_english.setVisibility(View.VISIBLE);
                             status_malayalam.setVisibility(View.VISIBLE);
-                        }catch (Exception e)
+                        }
+                    }catch (Exception e)
                         {e.printStackTrace();}
-                    }
+
 
                 }
 
