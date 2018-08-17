@@ -50,9 +50,9 @@ TextView statustext1,statustext2,statustext3;
     {
         if(status.equals("true"))
         {
-            statusimage1.setColorFilter(null);
+            statusimage1.setColorFilter(Color.parseColor("#ffffff"));
             statustext1.setTextColor(Color.parseColor("#ffffff"));
-            statusimage2.setColorFilter(null);
+            statusimage2.setColorFilter(Color.parseColor("#ffffff"));
             statustext2.setTextColor(Color.parseColor("#ffffff"));
         }
     }
@@ -64,11 +64,11 @@ TextView statustext1,statustext2,statustext3;
             switch (status)
             {
                 case "sent":
-                    statusimage1.setColorFilter(null);
+                    statusimage1.setColorFilter(Color.parseColor("#ffffff"));
                     statustext1.setTextColor(Color.parseColor("#ffffff"));
                     break;
                 case "received" :
-                    statusimage2.setColorFilter(null);
+                    statusimage2.setColorFilter(Color.parseColor("#ffffff"));
                     statustext2.setTextColor(Color.parseColor("#ffffff"));
                     break;
                 case "failed" :
