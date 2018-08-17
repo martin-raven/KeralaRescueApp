@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
     ProgressBar pg,pg1;
     LinearLayout English_layout,status_english;
     EditText location_place_english, location_place_malayalam,num_of_people_english,num_of_people_malayalam,contact_number_malayalam,contact_number_english;
-    TextView num_eng,num_mal,loc_eng,loc_mal,contact_mal,contact_eng;
+    TextView num_eng,num_mal,loc_eng,loc_mal,contact_mal,contact_eng,contact_text_mal,contact_text_eng;
     Boolean enlish_selected=false;
     DataModel datatobesent=new DataModel();
     Gson gson = new Gson();
@@ -123,6 +123,8 @@ public class MainActivity extends Activity {
         num_of_people_malayalam=findViewById(R.id.no_of_people_malayalam);
         contact_number_malayalam=findViewById(R.id.contact_number_edit_malayalam);
         contact_number_english=findViewById(R.id.contact_number_edit_english);
+        contact_text_eng=findViewById(R.id.contact_number_text_english);
+        contact_text_mal=findViewById(R.id.contact_number_text_malayalam);
 
         checkGPS();//to check  location is enabled or not
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -409,14 +411,20 @@ private void showKeyboard(LinearLayout layout){
                 Success_english.setVisibility(View.VISIBLE);
                 Help_malayalam.setVisibility(View.GONE);
                 Success_malayalam.setVisibility(View.VISIBLE);
-                location_place_english.setVisibility(View.GONE);location_place_malayalam.setVisibility(View.GONE);num_of_people_english.setVisibility(View.GONE);num_of_people_malayalam.setVisibility(View.GONE);
+                location_place_english.setVisibility(View.GONE);
+                location_place_malayalam.setVisibility(View.GONE);
+                num_of_people_english.setVisibility(View.GONE);
+                num_of_people_malayalam.setVisibility(View.GONE);
                 num_eng.setVisibility(View.GONE);
                 num_mal.setVisibility(View.GONE);
-
                 loc_eng.setVisibility(View.GONE);
                 loc_mal.setVisibility(View.GONE);
                 edit_loc_eng.setVisibility(View.GONE);
                 edit_loc_mal.setVisibility(View.GONE);
+                contact_number_english.setVisibility(View.GONE);
+                contact_number_malayalam.setVisibility(View.GONE);
+                contact_text_eng.setVisibility(View.GONE);
+                contact_text_mal.setVisibility(View.GONE);
 
 
                 Toast.makeText(MainActivity.this, "Request Received by server", Toast.LENGTH_SHORT).show();
