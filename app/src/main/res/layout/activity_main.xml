@@ -118,7 +118,14 @@
                     android:textSize="22sp" />
 
 
-
+                <ProgressBar
+                    android:layout_weight="1"
+                    android:id="@+id/progressBar_cyclic"
+                    android:padding="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:minWidth="40dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -135,7 +142,7 @@
                         android:text="നിങ്ങളുടെ സ്ഥലം "
                         android:textColor="@android:color/black"
 
-                        android:textSize=18sp" />
+                        android:textSize="18sp" />
 
 
                     <EditText
@@ -262,7 +269,14 @@
                     android:textColor="@android:color/black"
                     android:textSize="22sp" />
 
-
+                <ProgressBar
+                    android:layout_weight="1"
+                    android:id="@+id/progressBar_cyclic_eng"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:minHeight="40dp"
+                    android:minWidth="40dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

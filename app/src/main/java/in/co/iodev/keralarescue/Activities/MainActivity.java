@@ -12,12 +12,14 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.BatteryManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -27,6 +29,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,6 +68,7 @@ public class MainActivity extends Activity {
     private static final int LOCATION_PERMISSIONS_REQUEST = 10;
     Button Malayalam, English, Help_English, Help_malayalam, Success_malayalam,Success_english,edit_loc_eng,edit_loc_mal;
     LinearLayout Malayalam_layout,status_malayalam;
+    ProgressBar pg,pg1;
     LinearLayout English_layout,status_english;
     EditText location_place_english, location_place_malayalam,num_of_people_english,num_of_people_malayalam;
     TextView num_eng,num_mal,loc_eng,loc_mal;
@@ -102,7 +106,8 @@ public class MainActivity extends Activity {
         location_place_malayalam = findViewById(R.id.location_text_malayalam);
         num_eng=findViewById(R.id.number_eng);
         num_mal=findViewById(R.id.number_mal);
-
+        pg=findViewById(R.id.progressBar_cyclic_eng);
+        pg1=findViewById(R.id.progressBar_cyclic);
         loc_eng=findViewById(R.id.loc_eng);
         loc_mal=findViewById(R.id.loc_mal);
         edit_loc_eng=findViewById(R.id.edit_location_english);
@@ -114,7 +119,7 @@ public class MainActivity extends Activity {
 
         num_of_people_english=findViewById(R.id.no_of_people_english);
         num_of_people_malayalam=findViewById(R.id.no_of_people_malayalam);
-
+        checkGPS();//to check  location is enabled or not
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         try {
             String RequestStatus = sharedPref.getString(getResources().getString(R.string.IsRequestSent), null);
@@ -124,7 +129,10 @@ public class MainActivity extends Activity {
                 Success_english.setVisibility(View.VISIBLE);
                 Help_malayalam.setVisibility(View.GONE);
                 Success_malayalam.setVisibility(View.VISIBLE);
-                location_place_english.setVisibility(View.GONE);location_place_malayalam.setVisibility(View.GONE);num_of_people_english.setVisibility(View.GONE);num_of_people_malayalam.setVisibility(View.GONE);
+                location_place_english.setVisibility(View.GONE);
+                location_place_malayalam.setVisibility(View.GONE);
+                num_of_people_english.setVisibility(View.GONE);
+                num_of_people_malayalam.setVisibility(View.GONE);
                 num_eng.setVisibility(View.GONE);
                 num_mal.setVisibility(View.GONE);
 
@@ -160,6 +168,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 batteryPercentage = getBatteryPercentage();
+                checkGPS();
                 getLocation();
                 Help_English.setVisibility(View.GONE);
                 status_english.setVisibility(View.VISIBLE);
@@ -175,6 +184,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 batteryPercentage = getBatteryPercentage();
+                checkGPS();
                 getLocation();
                 Help_malayalam.setVisibility(View.GONE);
                 status_malayalam.setVisibility(View.VISIBLE);
@@ -271,12 +281,19 @@ public class MainActivity extends Activity {
                             datatobesent.setLocality(addresses.get(0).getLocality());
                             datatobesent.setDistrict(addresses.get(0).getSubAdminArea());
                             Log.d("District", addresses.get(0).getSubAdminArea());
-                            if(addresses.get(0).getLocality()!=null)
+                            if(addresses.get(0).getLocality()!=null) {
                                 Log.d("Locality", addresses.get(0).getLocality());
-                            location_place_english.setText(addresses.get(0).getLocality());
-                            location_place_malayalam.setText(addresses.get(0).getLocality());
+                                location_place_english.setText(addresses.get(0).getLocality());
+                                location_place_malayalam.setText(addresses.get(0).getLocality());
+                            }
+                            else {
+                                location_place_english.setText(addresses.get(0).getSubAdminArea());
+                                location_place_malayalam.setText(addresses.get(0).getSubAdminArea());
+                            }
                             status_english.setVisibility(View.VISIBLE);
                             status_malayalam.setVisibility(View.VISIBLE);
+                            pg.setVisibility(View.GONE);
+                            pg1.setVisibility(View.GONE);
                         }
                     }catch (Exception e)
                         {e.printStackTrace();}
@@ -421,5 +438,34 @@ private void showKeyboard(LinearLayout layout){
         // 5. return response message
         return conn.getResponseMessage()+"";
 
+    }
+    public  void checkGPS(){
+        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        boolean network_enabled = false;
+
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch(Exception ex) {}
+
+        try {
+            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch(Exception ex) {}
+
+        if(!gps_enabled && !network_enabled) {
+            // notify user
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+            dialog.setMessage(getResources().getString(R.string.gps_network_not_enabled));
+            dialog.setPositiveButton(getResources().getString(R.string.open_location_settings), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                    Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(myIntent);
+                    //get gps
+                }
+            });
+
+            dialog.show();
+        }
     }
 }
