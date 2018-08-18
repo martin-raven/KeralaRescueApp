@@ -54,6 +54,8 @@ import java.util.Locale;
 import in.co.iodev.keralarescue.Models.DataModel;
 import in.co.iodev.keralarescue.R;
 
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
+
 public class Request extends Activity {
 private static final int LOCATION_PERMISSIONS_REQUEST = 10;
 Button requestHelp;
@@ -81,7 +83,7 @@ String location;
         edit_location=findViewById(R.id.location_edit);
         checkGPS();//to check  location is enabled or not
         getLocation();
-        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        sharedPref = getDefaultSharedPreferences(getApplicationContext());
         try {
             String RequestStatus = sharedPref.getString(getResources().getString(R.string.IsRequestSent), null);
             String RequestLocation = sharedPref.getString("location", null);

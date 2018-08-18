@@ -38,6 +38,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 import in.co.iodev.keralarescue.R;
 
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
@@ -69,7 +71,7 @@ Boolean cancel=false;
         rescue_text=findViewById(R.id.rescue_text);
         rescue_number=findViewById(R.id.rescue_number);
         cancel_request=findViewById(R.id.cancel_request);
-        sharedPref=this.getPreferences(Context.MODE_PRIVATE);
+        sharedPref=getDefaultSharedPreferences(getApplicationContext());
         cancel_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
