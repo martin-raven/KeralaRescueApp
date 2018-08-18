@@ -85,11 +85,13 @@ String location;
         try {
             String RequestStatus = sharedPref.getString(getResources().getString(R.string.IsRequestSent), null);
             String RequestLocation = sharedPref.getString("location", null);
+            String TimeIndex = sharedPref.getString("TimeIndex", null);
             Log.d("Request Status", RequestStatus);
             if(RequestStatus.equals("true")){
                 Intent i=new Intent(Request.this,RequestStatusActivity.class);
                 i.putExtra("status","true");
                 i.putExtra("location",RequestLocation);
+                i.putExtra("TimeIndex",TimeIndex);
                 startActivity(i);
 
 
@@ -126,6 +128,7 @@ String location;
                         Intent i=new Intent(Request.this,RequestStatusActivity.class);
                         i.putExtra("status","false");
                         i.putExtra("location",datatobesent.getLocality());
+                         i.putExtra("TimeIndex",datatobesent.getTimeIndex());
                         startActivity(i);
 
             }
