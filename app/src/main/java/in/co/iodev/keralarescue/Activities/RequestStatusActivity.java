@@ -1,7 +1,5 @@
 package in.co.iodev.keralarescue.Activities;
 
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,12 +9,10 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +41,7 @@ import static android.preference.PreferenceManager.getDefaultSharedPreferences;
  * status bar and navigation/system bar) with user interaction.
  */
 public class RequestStatusActivity extends Activity {
+SwipeRefreshLayout swipeRefreshLayout;
 ImageView statusimage1,statusimage2,statusimage3;
 TextView location;
 TextView statustext1,statustext2,statustext3,rescue_text,rescue_number;
@@ -54,8 +51,8 @@ String receivedData;
 Button cancel_request;
 SharedPreferences sharedPref;
 Boolean cancel=false;
-
-
+Boolean refreshing=false;
+private Receiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,12 +68,14 @@ Boolean cancel=false;
         rescue_text=findViewById(R.id.rescue_text);
         rescue_number=findViewById(R.id.rescue_number);
         cancel_request=findViewById(R.id.cancel_request);
+        swipeRefreshLayout=findViewById(R.id.swiperefresh);
+
         sharedPref=getDefaultSharedPreferences(getApplicationContext());
         cancel_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cancel=true;
-                new HTTPAsyncTask().execute(cancel_post_url);
+                new HTTPAsyncTask2().execute(cancel_post_url);
             }
         });
         JSONObject timeindex=new JSONObject();
@@ -93,21 +92,37 @@ Boolean cancel=false;
         StringData=timeindex.toString();
         Log.v("stringdata",StringData);
         IntentFilter filter = new IntentFilter("status_broadcast");
-        this.registerReceiver(new Receiver(), filter);
+        receiver=new Receiver();
+        this.registerReceiver(receiver, filter);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshing=true;
+                new HTTPAsyncTask2().execute(request_post_url);
+
+            }
+        });
 
 
     }
     @Override
     protected void onStart() {
         super.onStart();
-        new HTTPAsyncTask().execute(request_post_url);
+        new HTTPAsyncTask2().execute(request_post_url);
 
 
     }
     @Override
     protected void onResume() {
         super.onResume();
-        new HTTPAsyncTask().execute(request_post_url);
+        new HTTPAsyncTask2().execute(request_post_url);
+
+
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+       this.unregisterReceiver(receiver);
 
 
     }
@@ -129,6 +144,7 @@ Boolean cancel=false;
             switch (status)
             {
                 case "sent":
+                    Toast.makeText(getApplicationContext(),"called",Toast.LENGTH_SHORT).show();
                     statusimage1.setColorFilter(Color.parseColor("#ffffff"));
                     statustext1.setTextColor(Color.parseColor("#ffffff"));
                     break;
@@ -140,6 +156,10 @@ Boolean cancel=false;
                     Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
                     finish();
                     break;
+                case "null" :
+                    Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
+
+                    break;
 
             }
         }
@@ -148,7 +168,7 @@ Boolean cancel=false;
         // Do Here what ever you want do on back press;
     }
 
-    private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
+    private class HTTPAsyncTask2 extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... urls) {
@@ -156,7 +176,7 @@ Boolean cancel=false;
             // params comes from the execute() call: params[0] is the url.
             try {
                 try {
-                    return HttpPost(urls[0]);
+                    return HttpPost2(urls[0]);
                 } catch (Exception e) {
                     e.printStackTrace();
                     return "Error!";
@@ -188,17 +208,25 @@ Boolean cancel=false;
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
+                }
+                if(refreshing)
+                {
+                    refreshing=false;
+                    swipeRefreshLayout.setRefreshing(refreshing);
+
                 }
             } else {
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString(getString(R.string.IsRequestSent), "false");
                 editor.apply();
+
                 finish();
 
             }
         }
 
-        private String HttpPost(String myUrl) throws IOException {
+        private String HttpPost2(String myUrl) throws IOException {
             String result = "";
 
             URL url = new URL(myUrl);
@@ -218,7 +246,7 @@ Boolean cancel=false;
 
             conn.connect();
 
-            Log.d("Response", conn.getResponseMessage().toString());
+            Log.d("Response from second", conn.getResponseMessage().toString());
             int responseCode = conn.getResponseCode();
             Log.d("Response Code:", String.valueOf(responseCode));
             if (responseCode == HttpsURLConnection.HTTP_OK) {

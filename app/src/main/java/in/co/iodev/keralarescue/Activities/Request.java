@@ -138,6 +138,13 @@ String location;
 
         });
     }
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        intent=new Intent();
+        intent.setAction("status_broadcast");
+    }
     String getBatteryPercentage() {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = getApplicationContext().registerReceiver(null, ifilter);
@@ -297,14 +304,11 @@ String location;
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(Request.this, "Data Sent Success!!", Toast.LENGTH_SHORT).show();
+            intent.putExtra("status","sent");
+            sendBroadcast(intent);
 
             Log.d("data is being sent",result);
             if (result.equals("OK")){
-
-
-
-                Toast.makeText(Request.this, "Request Received by server", Toast.LENGTH_SHORT).show();
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString(getString(R.string.IsRequestSent), "true");
                 editor.putString("location", help_location.getText().toString());
@@ -338,10 +342,20 @@ String location;
         os.close();
 
         // 4. make POST request to the given URL
+     try {
+
+         Log.d("exceptionintry","e");
+
         intent.putExtra("status","sent");
-        sendBroadcast(intent);
+        sendBroadcast(intent);}
+        catch (Exception e)
+        {
+            Log.d("exception in catch","e");
+            e.printStackTrace();
+        }
         conn.connect();
-        Log.d("Response",conn.getResponseMessage().toString());
+        Log.d("in first","HEY");
+        Log.d("Responsefrom1st",conn.getResponseMessage().toString());
 
         // 5. return response message
         return conn.getResponseMessage()+"";
