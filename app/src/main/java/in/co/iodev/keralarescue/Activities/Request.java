@@ -117,7 +117,7 @@ String location;
         requestHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isValidPhone(contact.getText().toString())&&isValidPhone(alternate_contact.getText().toString())&&!people.getText().toString().equals(""))
+                if(isValidPhone(contact.getText().toString())&&!people.getText().toString().equals(""))
                 {
                         batteryPercentage = getBatteryPercentage();
                         checkGPS();
