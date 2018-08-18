@@ -50,6 +50,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import in.co.iodev.keralarescue.Models.DataModel;
 import in.co.iodev.keralarescue.R;
@@ -116,6 +117,8 @@ String location;
         requestHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(isValidPhone(contact.getText().toString())&&isValidPhone(alternate_contact.getText().toString()))
+                {
                         batteryPercentage = getBatteryPercentage();
                         checkGPS();
 
@@ -131,7 +134,11 @@ String location;
                         i.putExtra("status","false");
                         i.putExtra("location",datatobesent.getLocality());
                          i.putExtra("TimeIndex",datatobesent.getTimeIndex());
-                        startActivity(i);
+                        startActivity(i);}
+                        else
+                {
+                    Toast.makeText(getApplicationContext(), "phone number in valid",Toast.LENGTH_SHORT).show();
+                }
 
             }
 
@@ -389,6 +396,20 @@ String location;
 
             dialog.show();
         }
+    }
+    private boolean isValidPhone(String phone) {
+        boolean check=false;
+        if(!Pattern.matches("[a-zA-Z]+", phone)) {
+            if(phone.length()!=10) {
+
+                check = false;
+            } else {
+                check = true;
+            }
+        } else {
+            check=false;
+        }
+        return check;
     }
 }
 

@@ -144,7 +144,7 @@ private Receiver receiver;
             switch (status)
             {
                 case "sent":
-                    Toast.makeText(getApplicationContext(),"called",Toast.LENGTH_SHORT).show();
+                    
                     statusimage1.setColorFilter(Color.parseColor("#ffffff"));
                     statustext1.setTextColor(Color.parseColor("#ffffff"));
                     break;
