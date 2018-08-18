@@ -124,8 +124,12 @@ String location;
 
                         datatobesent.setNumber_of_people(people.getText().toString());
                         datatobesent.setContactNumber(contact.getText().toString());
+                        if(!alternate_contact.getText().toString().equals(""))
                         datatobesent.setAlternateContactNumber(alternate_contact.getText().toString());
-                        datatobesent.setTimeIndex(String.valueOf(System.currentTimeMillis()));
+                        else
+                            datatobesent.setAlternateContactNumber(" ");
+
+                    datatobesent.setTimeIndex(String.valueOf(System.currentTimeMillis()));
                         datatobesent.setLocality(help_location.getText().toString());
                         StringData=gson.toJson(datatobesent);
                         Log.d("Data in json ",StringData);
