@@ -191,11 +191,11 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="380dp"
         android:background="@drawable/rounded_edge_white_bg"
-        android:elevation="5dp">
+        android:elevation="10dp">
 
         <Button
             android:id="@+id/request_help"
-            android:layout_margin="5dp"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/rounded_edge_white_bg"

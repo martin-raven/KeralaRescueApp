@@ -117,7 +117,7 @@ String location;
         requestHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isValidPhone(contact.getText().toString())&&isValidPhone(alternate_contact.getText().toString()))
+                if(isValidPhone(contact.getText().toString())&&isValidPhone(alternate_contact.getText().toString())&&!people.getText().toString().equals(""))
                 {
                         batteryPercentage = getBatteryPercentage();
                         checkGPS();
@@ -137,7 +137,11 @@ String location;
                         startActivity(i);}
                         else
                 {
+                    if(!people.getText().toString().equals(""))
                     Toast.makeText(getApplicationContext(), "phone number in valid",Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(getApplicationContext(), "please enter the number of people to be rescued",Toast.LENGTH_SHORT).show();
+
                 }
 
             }
