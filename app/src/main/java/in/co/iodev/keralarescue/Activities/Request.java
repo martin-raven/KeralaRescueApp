@@ -299,6 +299,11 @@ String location;
                 InputMethodManager.SHOW_FORCED, 0);
     }
 
+    public void gotoFoodMaterial(View view) {
+        Log.e("her","here");
+        startActivity(new Intent(Request.this, RequestFoodMaterialsActivity.class));
+    }
+
     private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
 
         @Override
